@@ -1,0 +1,12 @@
+FROM golang:1.18-alpine
+
+WORKDIR /app
+
+ADD . /app
+
+RUN go mod download
+RUN go build -o spam-detection
+
+EXPOSE 9000
+
+CMD [ "./spam-detection" ]
